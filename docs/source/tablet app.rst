@@ -1,19 +1,29 @@
-Usage
-=====
+.. _tablet_app:
 
-.. _installation:
 
-Installation
-------------
+Tablet App
+==========
 
-To use Lumache, first install it using pip:
+
+The tablet app is given to six scouts during matches and while pit scouting.
+..
+   add image of app
+
+After the scouts fill out the data, QR codes are generated which are scanned by the :ref:`_scanning_app<Scanning App>`.
+
+Installation for Development
+----------------------------
+
+To use the tablet app, first install it using pip:
 
 .. code-block:: console
 
    (.venv) $ pip install lumache
 
-Creating recipes
-----------------
+
+
+Deployment
+----------
 
 To retrieve a list of random ingredients,
 you can use the ``lumache.get_random_ingredients()`` function:
