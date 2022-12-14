@@ -2,9 +2,9 @@
 
 # -- Project information
 
-project = 'Lumache'
-copyright = '2021, Graziella'
-author = 'Graziella'
+project = '341 Scouting App'
+copyright = '2022, 341'
+author = 'Kevin Lobo'
 
 release = '0.1'
 version = '0.1.0'
@@ -17,6 +17,7 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.autosummary',
     'sphinx.ext.intersphinx',
+    'sphinx.ext.autosectionlabel'
 ]
 
 intersphinx_mapping = {
