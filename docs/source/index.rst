@@ -11,7 +11,6 @@ Contents
 --------
 
 .. toctree::
-   :maxdepth: 2
 
    tablet_app.rst
    scanning_app.rst
