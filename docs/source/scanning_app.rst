@@ -9,9 +9,8 @@ The scanning app is given to one scout who scans QR codes.
 ..
    add image of app
 
-After the scouts generate QR codes with the :ref:`_tablet_app<Tablet App>`
-for both pit and match scouting, the scanner can push the data to the 
-database when they are connected to the internet.
+After the scouts generate QR codes with the :ref:`tablet_app` and :ref:`master_app.` for both pit and match scouting,
+the scanner can push the data to the database when they are connected to the internet.
 
 Installation for Development
 ----------------------------

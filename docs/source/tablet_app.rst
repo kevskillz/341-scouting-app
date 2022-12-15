@@ -14,31 +14,136 @@ After the scouts fill out the data, QR codes are generated which are scanned by 
 Installation for Development
 ----------------------------
 
-To use the tablet app, first install it using pip:
+The tablet app uses Flutter. Follow instructions to install it `here <https://docs.flutter.dev/get-started/install/windows>`_.
 
-.. code-block:: console
+Since the app runs on android, follow the instructions to set up Android support `here <https://docs.flutter.dev/get-started/install/windows>`_. During development,
+a Kindle will likely be plugged in to test code, but installing an emulator like the instructions suggest doesn't hurt.
 
-   (.venv) $ pip install lumache
+Set up your VS Code editor to handle Flutter with the instructions provided `here <https://docs.flutter.dev/get-started/editor?tab=vscode>`_.
+
+Open up the GitHub project `341-tablet-app <TODO>`_ in `GitHub Desktop <https://desktop.github.com/>`_ for easy version control.
+
+Create a `.env` file with the following text: `TBA_API_KEY=api_key`, with `api_key` being replaced with an actual key, which can be obtained `here <https://www.thebluealliance.com/account>`_.
+
+Now try running the app with an Android device selected and it should spring to life!
+
+
+Components
+----------
+
+Global Variables
+~~~~~~~~~~~~~~~~
+
+Add variables to `.env` for private constant variables like api keys which requires security.
+
+Add other variables to `Globals.dart` if they need to be accessible throughout the project. These do not have to be constants.
+
+
+Custom Icons
+~~~~~~~~~~~~
+
+
+Go to `fluttericon <https://www.fluttericon.com/>`_ for custom icons. Select the icons and click download. Unzip and find the `.ttf` file. Put that under the `/fonts` folder
+in the Flutter project. Then go to the `.dart` file downloaded and copy ONLY the IconData objects into `CustomIcons.dart`. Finally, go to the end of the `pubspec.yaml` file
+and add the new `.ttf` file as another asset under `- asset: fonts/CustomIcons.ttf`.
+.. code-block:: yaml
+
+   fonts:
+         - family: CustomIcons
+            fonts:
+               - asset: fonts/CustomIcons.ttf
+
+Example Usage: `Icon(CustomIcons.robot_arm)` generates an Icon object with the custom robot arm icon.
+
+Field Info
+~~~~~~~~~~
+
+Class to hold formatting and type information for form fields.
+
+Local Data Handler
+~~~~~~~~~~~~~~~~~~
+
+`Global.dart` for .
+`.env` for private constant variables like api keys which requires security.
+
+Navigation Drawer
+~~~~~~~~~~~~~~~~~
+
+`Global.dart` for .
+`.env` for private constant variables like api keys which requires security.
+
+QR Process
+~~~~~~~~~~
+
+
+TBA Query
+~~~~~~~~~
+
+
+
+UI Functions
+~~~~~~~~~~~~
+
+
+Pages Subfolder
+~~~~~~~~~~~~~~~
+
+Config Page
+^^^^^^^^^^^
+
+Match Page
+^^^^^^^^^^^
+
+Pit Page
+^^^^^^^^^^^
+
+QR Code Page
+^^^^^^^^^^^
+
+Picture Page
+^^^^^^^^^^^
+
+
+FormObjects Subfolder
+~~~~~~~~~~~~~~~~~~~~
+
+Checkbox
+^^^^^^^^
+
+Checkbox Group
+^^^^^^^^^^^^^^
+
+Counter
+^^^^^^^
+
+Radio Group
+^^^^^^^^^^^
+
+Stopwatch
+^^^^^^^^^
+
+Switch
+^^^^^^
+
+Text Field
+^^^^^^^^^^
+
+
+Title Text
+^^^^^^^^^^
+Wrapper for a generic text object used in form objects.
+
 
 
 
 Deployment
 ----------
 
-To retrieve a list of random ingredients,
-you can use the ``lumache.get_random_ingredients()`` function:
+To deploy the app, connect to the Kindle and select it as the primary device in your VS Code Flutter project by clicking on the device panel on the bottom right.
 
-.. autofunction:: lumache.get_random_ingredients
+Then run the following command in the terminal at the root directory of the project.
+.. code-block:: console
 
-The ``kind`` parameter should be either ``"meat"``, ``"fish"``,
-or ``"veggies"``. Otherwise, :py:func:`lumache.get_random_ingredients`
-will raise an exception.
+   flutter run --release
 
-.. autoexception:: lumache.InvalidKindError
-
-For example:
-
->>> import lumache
->>> lumache.get_random_ingredients()
-['shells', 'gorgonzola', 'parsley']
-
+The --release flag is required as Flutter runs everything in debug mode by default.

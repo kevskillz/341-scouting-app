@@ -1,4 +1,4 @@
-.. _tablet_app:
+.. _api_server:
 
 
 Tablet App
