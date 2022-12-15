@@ -43,17 +43,11 @@ Custom Icons
 ~~~~~~~~~~~~
 
 
-Go to `fluttericon <https://www.fluttericon.com/>`_ for custom icons. Select the icons and click download. Unzip and find the `.ttf` file. Put that under the `/fonts` folder
-in the Flutter project. Then go to the `.dart` file downloaded and copy ONLY the IconData objects into `CustomIcons.dart`. Finally, go to the end of the `pubspec.yaml` file
-and add the new `.ttf` file as another asset under `- asset: fonts/CustomIcons.ttf`.
-.. code-block:: yaml
+Go to `fluttericon <https://www.fluttericon.com/>`_ for custom icons. Select the icons and click download. Make sure to download the icons already in the FLutter project as 
+you can only have one ttf font file. Unzip and find the ``.ttf`` file. Put that under the `/fonts` folder in the Flutter project and rename it to :file:`CustomIcons.ttf`. Then go to
+the ``.dart`` file downloaded and copy ONLY the IconData objects into :file:`CustomIcons.dart`. 
 
-   fonts:
-         - family: CustomIcons
-            fonts:
-               - asset: fonts/CustomIcons.ttf
-
-Example Usage: `Icon(CustomIcons.robot_arm)` generates an Icon object with the custom robot arm icon.
+Example Usage: ``Icon(CustomIcons.robot_arm)`` generates an Icon object with the custom robot arm icon.
 
 Field Info
 ~~~~~~~~~~
@@ -63,8 +57,8 @@ Class to hold formatting and type information for form fields.
 Local Data Handler
 ~~~~~~~~~~~~~~~~~~
 
-`Global.dart` for .
-`.env` for private constant variables like api keys which requires security.
+:file:`Global.dart` for .
+:file:`.env` for private constant variables like api keys which requires security.
 
 Navigation Drawer
 ~~~~~~~~~~~~~~~~~
@@ -142,6 +136,7 @@ Deployment
 To deploy the app, connect to the Kindle and select it as the primary device in your VS Code Flutter project by clicking on the device panel on the bottom right.
 
 Then run the following command in the terminal at the root directory of the project.
+
 .. code-block:: console
 
    flutter run --release
