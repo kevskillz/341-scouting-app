@@ -218,15 +218,15 @@ A simple true or false checkbox.
 .. code-block:: dart
 
    CheckboxObj(
-    String label,
-    String id,
-    {
-    final Color checkColor = Colors.white, // color of check
-    final Color activeColor = Colors.black, // color of checkbox background
-    }
+      String label,
+      String id,
+      {
+      final Color checkColor = Colors.white, // color of check
+      final Color activeColor = Colors.black // color of checkbox background
+      }
    )
 
-Data saved as ``boolean``.
+Data saved as ``bool``.
 
 
 Checkbox Group
@@ -235,6 +235,17 @@ Checkbox Group
 
 A group of chips which allows for **multiple items** to be selected at once.
 
+.. code-block:: dart
+
+   CheckboxGroupObj(
+      String label,
+      String id,
+      List<FormBuilderChipOption> options, // list of selectable checkbox options
+      {
+      final Color activeColor = Colors.black // color when option is selected
+      }
+   )
+
 Data saved as ``List<dynamic>``.
 
 
@@ -242,9 +253,21 @@ Counter
 ^^^^^^^
 ``CounterObj.dart``
 
-A counter which has a ``-`` control on the left and a ``+`` control on the right. It's value can also be edited through the keyboard.
+A counter which has a ``-`` and ``+`` control. It's value can also be edited through the keyboard.
+
+.. code-block:: dart
+
+   CounterObj(
+      String label,
+      String id,
+      {
+      final color = Colors.black, // background color of counter
+      final arrangement = ButtonArrangement.incRightDecLeft // arrangement of - and + control
+      }
+   )
 
 Data saved as ``int``.
+
 
 Radio Group
 ^^^^^^^^^^^
@@ -252,7 +275,43 @@ Radio Group
 
 A group of chips which allows for **only one** item to be selected at once.
 
+.. code-block:: dart
+
+   RadioGroupObj(
+      String label,
+      String id,
+      List<FormBuilderChipOption> options, // list of selectable options
+      {
+      final Color activeColor = Colors.black, // color when option is selected
+      Function(dynamic)? onChanged, // callback function which is called when an option is selected
+      dynamic initialValue // value to be selected by default
+      }
+   )
+
 Data saved as ``String``.
+
+
+SliderObj
+^^^^^^^^^
+``SliderObj.dart``
+
+A slider with reset and start/stop buttons.
+
+.. code-block:: dart
+
+   SliderObj(
+      String label,
+      String id,
+      final double min, // min value of slider
+      final double max, // max value of slider
+      {
+      final int? discreteDivisions, // number of divisions between min and max, including one for max (set to max - min for steps of 1)
+      double? initialVal, // initial value to be set for slider (by default it is min)
+      Function(dynamic)? onChanged, // callback function which is called when slider is changed
+      }
+   )
+
+Data saved as ``double``.
 
 
 Stopwatch
@@ -261,6 +320,18 @@ Stopwatch
 
 A stopwatch with reset and start/stop buttons.
 
+.. code-block:: dart
+
+   StopwatchObj(
+      String label,
+      String id,
+      GlobalKey<FormBuilderState> curKey, // the key used in page which manages the form state
+      {
+      bool enabled = true, // whether the stopwatch can be used 
+      Stream<bool>? enabledController // a stream which can change the enabled state of the stopwatch (true = enabled, false = disabled)
+      }
+   )
+
 Data saved as ``String`` (# of seconds formatted to 2 decimal places).
 
 
@@ -268,16 +339,45 @@ Switch
 ^^^^^^
 ``SwitchObj.dart``
 
-A switch is simila 
+A simple switch which can be toggled on and off.
 
-Data saved as ``String`` (formatted to 2 decimal places).
+.. code-block:: dart
+
+   SwitchObj(
+      String label,
+      String id,
+      {
+      final Color activeColor = Colors.black, // color of the switch track when set to on
+      final Color inactiveColor = Colors.white, // color of the switch track when set to off
+      final Color activeColorCircle = const Color.fromARGB(255, 189, 189, 189), // color of the switch circle when set to on
+      final Color inactiveColorCircle = Colors.black87, // color of the switch circle when set to off
+      final bool enabled = true, // whether the switch can be updated
+      final Function(bool?)? onChanged // callback function which is called when switch is toggled
+      }
+   )
+
+Data saved as ``bool``.
 
 
 Text Field
 ^^^^^^^^^^
+``TextFieldObj.dart``
 
+.. code-block:: dart
 
+   TextFieldObj(
+      String label,
+      String id,
+      FieldInfo typeRestrictions, // used to determine type of keyboard to display and what inputs are allowed
+      {
+      Function(dynamic)? onChanged, // callback function which is called when field is updated
+      String? initalValue, // initial text in field 
+      double? fontSize = TitleTxt.FONT_SIZE, // font size of text
+      TextEditingController? controller // can update the text of the field programatically without calling setState with a controller
+      }
+   )
 
+Data saved as ``String``.
 
 
 Deployment
