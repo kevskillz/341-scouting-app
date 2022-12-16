@@ -47,7 +47,7 @@ Custom Icons
 ~~~~~~~~~~~~
 ``CustomIcons.dart``
 
-Go to `fluttericon <https://www.fluttericon.com/>`_ for custom icons. Select the icons and click download. Make sure to download the icons already in the FLutter project as 
+Go to `fluttericon <https://www.fluttericon.com/>`_ for custom icons. Select the icons and click download. Make sure to download the icons already in the FlLutter project as 
 you can only have one ttf font file. Unzip and find the ``.ttf`` file. Put that under the :file:`fonts` folder in the Flutter project and rename it to :file:`CustomIcons.ttf`. Then go to
 the ``.dart`` file downloaded and copy ONLY the IconData objects into :file:`CustomIcons.dart`. 
 
@@ -108,7 +108,7 @@ should be done inside this for loop:
     } else if (arr[key] is List<dynamic>) {
       arr[key] = arr[key].join(',');
     }
-  }
+   }
 
 
 TBA Query
@@ -205,20 +205,26 @@ FormObjects Subfolder
 All FormObjects require a label and id. The label is the text which will be displayed to explain the FormObject. The id is what
 differentiates FormObjects and should be unique and match what is stored in ``MATCH_FIELDS`` or ``PIT_FIELDS``.
 
+.. note:: 
+
+   In dart, all arguments that are surrounded by {} are **optional** if they are not marked required.
 
 Checkbox
 ^^^^^^^^
 ``CheckboxObj.dart``
 
-
-.. class:: CheckboxObj
-   :param label:
-   :type param1: int
-   :param id:
-   :type param2: int
-   
-
 A simple true or false checkbox.
+
+.. code-block:: dart
+
+   CheckboxObj(
+    String label,
+    String id,
+    {
+    final Color checkColor = Colors.white, // color of check
+    final Color activeColor = Colors.black, // color of checkbox background
+    }
+   )
 
 Data saved as ``boolean``.
 
