@@ -23,7 +23,7 @@ Set up your VS Code editor to handle Flutter with the instructions provided `her
 
 Open up the GitHub project `341-tablet-app <TODO>`_ in `GitHub Desktop <https://desktop.github.com/>`_ for easy version control.
 
-Create a `.env` file with the following text: `TBA_API_KEY=api_key`, with `api_key` being replaced with an actual key, which can be obtained `here <https://www.thebluealliance.com/account>`_.
+Create a :file:`.env` file with the following text: ``TBA_API_KEY=api_key``, with ``api_key`` being replaced with an actual key, which can be obtained `here <https://www.thebluealliance.com/account>`_.
 
 Now try running the app with an Android device selected and it should spring to life!
 
@@ -31,101 +31,245 @@ Now try running the app with an Android device selected and it should spring to 
 Components
 ----------
 
+
 Global Variables
 ~~~~~~~~~~~~~~~~
+``.env``, ``Globals.dart``
 
-Add variables to `.env` for private constant variables like api keys which requires security.
+Add variables to :file:`.env` for private constant variables like api keys which requires security.
 
-Add other variables to `Globals.dart` if they need to be accessible throughout the project. These do not have to be constants.
+Add other variables to :file:`Globals.dart` if they need to be accessible throughout the project. These do not have to be constants.
+
+``MATCH_FIELDS`` and ``PIT_FIELDS`` will need to be changed to match the current season's scouting data.
 
 
 Custom Icons
 ~~~~~~~~~~~~
-
+``CustomIcons.dart``
 
 Go to `fluttericon <https://www.fluttericon.com/>`_ for custom icons. Select the icons and click download. Make sure to download the icons already in the FLutter project as 
-you can only have one ttf font file. Unzip and find the ``.ttf`` file. Put that under the `/fonts` folder in the Flutter project and rename it to :file:`CustomIcons.ttf`. Then go to
+you can only have one ttf font file. Unzip and find the ``.ttf`` file. Put that under the :file:`fonts` folder in the Flutter project and rename it to :file:`CustomIcons.ttf`. Then go to
 the ``.dart`` file downloaded and copy ONLY the IconData objects into :file:`CustomIcons.dart`. 
 
 Example Usage: ``Icon(CustomIcons.robot_arm)`` generates an Icon object with the custom robot arm icon.
 
+
 Field Info
 ~~~~~~~~~~
+``FieldInfo.dart``
 
 Class to hold formatting and type information for form fields.
 
+
 Local Data Handler
 ~~~~~~~~~~~~~~~~~~
+``LocalDataHandler.dart``
 
-:file:`Global.dart` for .
-:file:`.env` for private constant variables like api keys which requires security.
+Contains functions to save data to the tablet locally. Called whenever the data is updated/submitted.
+
+.. warning:: 
+
+   Pit images are **only** saved locally and we will need to develop a way to transfer these images to the database quickly.
+
 
 Navigation Drawer
 ~~~~~~~~~~~~~~~~~
+``NavigationDrawer.dart``
 
-`Global.dart` for .
-`.env` for private constant variables like api keys which requires security.
+Creates navigation drawer to switch between pages. To add a new item, add to the ``Wrap`` children in ``buildMenuItems`` like so:
+
+.. code-block:: dart
+
+   ListTile(
+          leading: const Icon(Icons.qr_code_2_outlined),
+          title: const Text("QR Codes"),
+          onTap: () {
+            onPageTap?.call();
+
+            Navigator.of(context)
+                .pushReplacement(MaterialPageRoute(builder: (ctx) => QRPage()));
+          },
+   ),
+
+Change the icon, title, and the destination in the ``MaterialPageRoute`` builder. Keep everything else the same.
 
 QR Process
 ~~~~~~~~~~
+``QRProcess.dart``
+
+Contains the ``addEntry`` function which is called whenever a match or pit entry is submitted. Any special processing of certain data types when converting to Strings
+should be done inside this for loop:
+
+.. code-block:: dart
+
+   for (String key in arr.keys) {
+    if (arr[key] is bool) {
+      arr[key] = arr[key] ? '1' : '0';
+    } else if (arr[key] is List<dynamic>) {
+      arr[key] = arr[key].join(',');
+    }
+  }
 
 
 TBA Query
 ~~~~~~~~~
+``TBAQuery.dart``
 
+Contains functions to fetch and handle TBA data. Used to determine which team to scout during matches.
+
+
+Title Text
+~~~~~~~~~~
+``TitleTxt.dart``
+
+Wrapper for a generic text object used in form objects.
 
 
 UI Functions
 ~~~~~~~~~~~~
+``UIFunctions.dart``
+
+Contains the ``showSnackBar`` function to show the bottom black bar with a custom message.
+Contains the ``hideKeyboard`` function to force the keyboard to be hidden.
 
 
 Pages Subfolder
 ~~~~~~~~~~~~~~~
 
+
 Config Page
 ^^^^^^^^^^^
+``ConfigPage.dart``
+
+
+This page manages the configuration of the app. It is the first page the app loads into. The ``initState`` function is first called, so it loads cached data on
+the app's first load and notifies the user through the snackbar.
+
+.. note:: 
+
+   Whenever overriding ``initState``, remember to call ``super.initState()``
+
+Add new Widgets to be displayed in the ``build`` function in the children of ``Column``.
+
 
 Match Page
 ^^^^^^^^^^^
+``MatchPage.dart``
+
+This page manages the match scouting portion of this app. Autonomous and Teleop forms will need to be modified to match the current season's match scouting data.
+To modify the forms, go to the ``build`` function and find a ``FormBuilder`` (first one is info, second one is auton, third one is teleop). Modify the Widgets in 
+the children under ``Column`` at the respective ``FormBuilder``.
+
+.. important:: 
+
+   Ensure that the id passed in to FormObjects in the form matches the keys defined in ``MATCH_FIELDS``
+
 
 Pit Page
-^^^^^^^^^^^
+^^^^^^^^
+``PitPage.dart``
+
+This page manages the pit scouting portion of this app. The form will need to be modified to match the current season's pit scouting data.
+To modify the forms, go to the ``build`` function and modify the Widgets in the children under ``Column``.
+
+.. important:: 
+
+   Ensure that the id passed in to FormObjects in the form matches the keys defined in ``PIT_FIELDS``
+
 
 QR Code Page
-^^^^^^^^^^^
+^^^^^^^^^^^^
+``QRPage.dart``
+
+This page displays the QR codes and allows for the modification of data in case of user error, which instantly updates the codes.
+
+Contains ``QRWrapper``, which generates the QR codes and the editing grid.
+Contains ``QRCarousel``, which manages multiple ``QRWrapper`` objects and displays them in a carousel.
+
+.. note:: 
+
+   ``QRPage`` is the class which is ultimately displayed.
+
 
 Picture Page
-^^^^^^^^^^^
+^^^^^^^^^^^^
+``TakePicPage.dart``
+
+This page displays a live camera feed and takes a photo before popping back to the last page. This is only used in the Pit Page.
 
 
 FormObjects Subfolder
 ~~~~~~~~~~~~~~~~~~~~
 
+
+All FormObjects require a label and id. The label is the text which will be displayed to explain the FormObject. The id is what
+differentiates FormObjects and should be unique and match what is stored in ``MATCH_FIELDS`` or ``PIT_FIELDS``.
+
+
 Checkbox
 ^^^^^^^^
+``CheckboxObj.dart``
+
+
+.. class:: CheckboxObj
+   :param label:
+   :type param1: int
+   :param id:
+   :type param2: int
+   
+
+A simple true or false checkbox.
+
+Data saved as ``boolean``.
+
 
 Checkbox Group
 ^^^^^^^^^^^^^^
+``CheckboxGroupObj.dart``
+
+A group of chips which allows for **multiple items** to be selected at once.
+
+Data saved as ``List<dynamic>``.
+
 
 Counter
 ^^^^^^^
+``CounterObj.dart``
+
+A counter which has a ``-`` control on the left and a ``+`` control on the right. It's value can also be edited through the keyboard.
+
+Data saved as ``int``.
 
 Radio Group
 ^^^^^^^^^^^
+``RadioGroupObj.dart``
+
+A group of chips which allows for **only one** item to be selected at once.
+
+Data saved as ``String``.
+
 
 Stopwatch
 ^^^^^^^^^
+``StopwatchObj.dart``
+
+A stopwatch with reset and start/stop buttons.
+
+Data saved as ``String`` (# of seconds formatted to 2 decimal places).
+
 
 Switch
 ^^^^^^
+``SwitchObj.dart``
+
+A switch is simila 
+
+Data saved as ``String`` (formatted to 2 decimal places).
+
 
 Text Field
 ^^^^^^^^^^
 
-
-Title Text
-^^^^^^^^^^
-Wrapper for a generic text object used in form objects.
 
 
 
