@@ -16,7 +16,7 @@ Installation for Development
 ----------------------------
 
 
-Open up the GitHub project `341-visualization <TODO>`_ in `GitHub Desktop <https://desktop.github.com/>`_ for easy version control.
+Open up the GitHub project `341-scouting https://github.com/kevskillz/341-Scouting`_ in `GitHub Desktop <https://desktop.github.com/>`_ for easy version control and open the ``visualization`` folder in VS Code.
 
 Open the folder in VS Code and start developing.
 

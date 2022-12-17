@@ -21,7 +21,7 @@ The scanning app uses Flutter. Follow instructions to install it `here <https://
 
 Set up your VS Code editor to handle Flutter with the instructions provided `here <https://docs.flutter.dev/get-started/editor?tab=vscode>`_.
 
-Open up the GitHub project `341-scanner-app <TODO>`_ in `GitHub Desktop <https://desktop.github.com/>`_ for easy version control.
+Open up the GitHub project `341-scouting https://github.com/kevskillz/341-Scouting`_ in `GitHub Desktop <https://desktop.github.com/>`_ for easy version control and open the ``scanning_app`` folder in VS Code.
 
 
 Deployment

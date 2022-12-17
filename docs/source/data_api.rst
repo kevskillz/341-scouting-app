@@ -14,9 +14,9 @@ Installation for Development
 
 Download Node.js `here <https://nodejs.org/en/download/>`_.
 
-Open up the GitHub project `341-data-api <TODO>`_ in `GitHub Desktop <https://desktop.github.com/>`_ for easy version control.
+Open up the GitHub project `341-scouting https://github.com/kevskillz/341-Scouting`_ in `GitHub Desktop <https://desktop.github.com/>`_ for easy version control and open the ``data_api`` folder in VS Code.
 
-In the app directory, run
+In this directory, run
 
 .. code-block:: console
 

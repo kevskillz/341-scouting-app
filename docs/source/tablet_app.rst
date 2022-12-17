@@ -21,7 +21,7 @@ a Kindle will likely be plugged in to test code, but installing an emulator like
 
 Set up your VS Code editor to handle Flutter with the instructions provided `here <https://docs.flutter.dev/get-started/editor?tab=vscode>`_.
 
-Open up the GitHub project `341-tablet-app <TODO>`_ in `GitHub Desktop <https://desktop.github.com/>`_ for easy version control.
+Open up the GitHub project `341-scouting https://github.com/kevskillz/341-Scouting`_ in `GitHub Desktop <https://desktop.github.com/>`_ for easy version control and open the ``tablet_app`` folder in VS Code.
 
 Create a :file:`.env` file with the following text: ``TBA_API_KEY=api_key``, with ``api_key`` being replaced with an actual key, which can be obtained `here <https://www.thebluealliance.com/account>`_.
 
