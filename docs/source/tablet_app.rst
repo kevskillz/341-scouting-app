@@ -16,7 +16,7 @@ Installation for Development
 
 The tablet app uses Flutter. Follow instructions to install it `here <https://docs.flutter.dev/get-started/install/windows>`_.
 
-Since the app runs on android, follow the instructions to set up Android support `here <https://docs.flutter.dev/get-started/install/windows>`_. During development,
+Since the app runs on android, follow the instructions to set up Android support `here <https://docs.flutter.dev/get-started/install/windows#android-setup>`_. During development,
 a Kindle will likely be plugged in to test code, but installing an emulator like the instructions suggest doesn't hurt.
 
 Set up your VS Code editor to handle Flutter with the instructions provided `here <https://docs.flutter.dev/get-started/editor?tab=vscode>`_.

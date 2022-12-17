@@ -2,7 +2,7 @@
 
 
 Scanning App
-==========
+============
 
 
 The scanning app is given to one scout who scans QR codes.
@@ -10,42 +10,32 @@ The scanning app is given to one scout who scans QR codes.
    add image of app
 
 After the scouts generate QR codes with the :ref:`tablet_app` and :ref:`master_app.` for both pit and match scouting,
-the scanner can push the data to the database when they are connected to the internet.
+the scanner can push the data to the database when they are connected to the internet. The scanning app runs on the
+browser but does **not** require constant internet access.
 
 Installation for Development
 ----------------------------
 
-To use the tablet app, first install it using pip:
 
-.. code-block:: console
+The scanning app uses Flutter. Follow instructions to install it `here <https://docs.flutter.dev/get-started/install/windows>`_.
 
-   (.venv) $ pip install lumache
+Set up your VS Code editor to handle Flutter with the instructions provided `here <https://docs.flutter.dev/get-started/editor?tab=vscode>`_.
 
-
-Usage
------
-
-Test
-~~~~
+Open up the GitHub project `341-scanner-app <TODO>`_ in `GitHub Desktop <https://desktop.github.com/>`_ for easy version control.
 
 
 Deployment
 ----------
 
-To retrieve a list of random ingredients,
-you can use the ``lumache.get_random_ingredients()`` function:
+First run
 
-.. autofunction:: lumache.get_random_ingredients
+.. code-block:: console
 
-The ``kind`` parameter should be either ``"meat"``, ``"fish"``,
-or ``"veggies"``. Otherwise, :py:func:`lumache.get_random_ingredients`
-will raise an exception.
+   flutter build web
 
-.. autoexception:: lumache.InvalidKindError
+Then navigate to the ``build/web`` folder generated with the assets folder and deploy it on the team server.
 
-For example:
-
->>> import lumache
->>> lumache.get_random_ingredients()
-['shells', 'gorgonzola', 'parsley']
+.. note::
+   
+   Where this is deployed online will need to be updated.
 

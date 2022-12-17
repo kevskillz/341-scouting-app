@@ -14,7 +14,8 @@ Contents
    :maxdepth: 2
 
    tablet_app.rst
+   master_app.rst
    scanning_app.rst
    database.rst
-   api_server.rst
+   data_api.rst
    visualization.rst
