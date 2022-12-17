@@ -6,8 +6,6 @@ Tablet App
 
 
 The tablet app is given to six scouts during matches and while pit scouting.
-..
-   add image of app
 
 After the scouts fill out the data, QR codes are generated which are scanned by the :ref:`scanning_app`.
 
