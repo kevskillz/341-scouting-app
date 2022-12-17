@@ -6,8 +6,6 @@ Visualization
 
 
 The data visualization portion of the scouting solution is what all the data flows down to. 
-..
-   add image of app
 
 The data visualization is a website which gets its data from the :ref:`database`.
 
